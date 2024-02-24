@@ -29,3 +29,43 @@ The program utilizes classes to represent different entities within a library sy
 The `Library` class serves as the main orchestrator, allowing operations such as adding and removing books, as well as checking books in and out by patrons. The `BookStatus` class helps in managing the status of each book, indicating whether it's currently checked out and by whom.
 
 By implementing these classes and their corresponding methods, the program facilitates efficient management of books and patrons within the library system, enabling tasks such as adding, removing, checking out, and checking in books to be performed seamlessly.
+
+```
+const library = new Library("Central Library", books);
+
+// Adding new books
+library.addBook("The Alchemist", "Paulo Coelho", 11);
+library.addBook("The Da Vinci Code", "Dan Brown", 12);
+
+// Removing a book
+library.removeBook(5);
+
+// Creating a new patron
+const patron = new Patron("John Smith", 1);
+
+// Checking out a book for the patron
+library.checkOutBook(3, patron);
+
+// Logging the book checked out by the patron
+const checkedOutBook = library.getBookById(3);
+console.log(
+  `bookTitle: ${checkedOutBook.title}, checkedOutBy: ${checkedOutBook.status.patron.name}`
+);
+
+// Checking the book back in
+library.checkInBook(3);
+
+// Logging the book checked in by the patron
+const checkedInBook = library.getBookById(3);
+console.log(
+  `bookTitle: ${checkedInBook.title}, checkedOut: ${checkedInBook.status.checkedOut}`
+);
+```
+
+**Output**:
+
+```
+bookTitle: 1984, checkedOutBy: John Smith
+
+bookTitle: 1984, checkedOut: false
+```
